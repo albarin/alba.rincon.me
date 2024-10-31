@@ -1,0 +1,109 @@
+---
+import ThemeSwitcher from "./ThemeSwitcher.astro";
+
+const navItems = [
+	{
+		title: "Experience",
+		label: "experience",
+		url: "/#experience",
+	},
+	// {
+	//   title: "Projects",
+	//   label: "projects",
+	//   url: "/#projects",
+	// },
+	{
+		title: "About",
+		label: "about",
+		url: "/#about",
+	},
+	{
+		title: "Contact",
+		label: "contact",
+		url: "mailto:alba@rincon.me",
+	},
+];
+---
+
+<header
+	class="fixed top-0 z-10 mx-auto mt-2 flex w-full items-center justify-center"
+>
+	<nav
+		class="flex items-center justify-center rounded-full px-3 text-sm font-medium"
+	>
+		{
+			navItems.map((link) => (
+				<a
+					class="relative block px-2 py-2 transition hover:text-accent"
+					aria-label={link.label}
+					href={link.url}
+				>
+					{link.title}
+				</a>
+			))
+		}
+		<ThemeSwitcher class="ml-1" />
+	</nav>
+</header>
+
+<script>
+	document.addEventListener("astro:page-load", () => {
+		const sections = document.querySelectorAll("section");
+		const navItems = document.querySelectorAll("header nav a");
+
+		const callback = (entries: any[]) => {
+			entries.forEach((entry) => {
+				if (entry.isIntersecting) {
+					navItems.forEach((item) => {
+						if (item.getAttribute("aria-label") == entry.target.id) {
+							item.classList.add("text-accent");
+						} else {
+							item.classList.remove("text-aceent");
+						}
+					});
+				}
+			});
+		};
+
+		const observer = new IntersectionObserver(callback, {
+			root: null,
+			rootMargin: "0px",
+			threshold: 0.3,
+		});
+
+		sections.forEach((section) => {
+			observer.observe(section);
+		});
+
+		document.onvisibilitychange = () => {
+			if (document.visibilityState === "hidden") {
+				observer.disconnect();
+			} else {
+				sections.forEach((section) => {
+					observer.observe(section);
+				});
+			}
+		};
+	});
+</script>
+
+<style>
+	nav {
+		animation: nav-shadow 1s linear both;
+		animation-timeline: scroll();
+		animation-range: 0 100px;
+	}
+
+	nav {
+		@apply bg-base-200;
+	}
+
+	@keyframes nav-shadow {
+		0% {
+			@apply bg-white/0;
+		}
+		to {
+			@apply shadow-lg ring-1 ring-neutral/10 backdrop-blur;
+		}
+	}
+</style>
