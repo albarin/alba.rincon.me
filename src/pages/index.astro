@@ -1,9 +1,10 @@
 ---
+import ThemeSwitcher from "../components/ThemeSwitcher.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Welcome to Astro.">
-	<main>
+	<main class="bg-base-100">
 		<button class="btn">Button</button>
 		<button class="btn btn-neutral">Neutral</button>
 		<button class="btn btn-primary">Primary</button>
@@ -12,16 +13,7 @@ import Layout from "../layouts/Layout.astro";
 		<button class="btn btn-ghost">Ghost</button>
 		<button class="btn btn-link">Link</button>
 	</main>
+
+	<ThemeSwitcher />
 </Layout>
 
-<style>
-	main {
-		margin: auto;
-		padding: 1rem;
-		width: 800px;
-		max-width: calc(100% - 2rem);
-		color: white;
-		font-size: 20px;
-		line-height: 1.6;
-	}
-</style>

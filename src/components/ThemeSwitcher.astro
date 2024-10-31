@@ -1,0 +1,97 @@
+---
+import System from "./icons/System.astro";
+import Moon from "./icons/Moon.astro";
+import Sun from "./icons/Sun.astro";
+
+const { class: className } = Astro.props;
+---
+
+<button
+	id="theme-toggle"
+	class:list={["swap-rotate bg-transparent", className]}
+	aria-label="Theme switcher"
+>
+	<Sun class="swap-on w-5 h-5 fill-current" />
+	<Moon class="swap-off w-5 h-5 fill-current" />
+	<System class="swap-system w-5 h-5 fill-current" />
+</button>
+
+<script>
+	const themeToggle = document.getElementById("theme-toggle");
+	const themes = ["light", "dark", "system"];
+	let currentThemeIndex = 0;
+
+	function initializeTheme() {
+		const savedTheme = localStorage.getItem("theme");
+		if (savedTheme && themes.includes(savedTheme)) {
+			currentThemeIndex = themes.indexOf(savedTheme);
+		} else {
+			currentThemeIndex = 2;
+		}
+		applyTheme();
+	}
+
+	function applyTheme() {
+		const theme = themes[currentThemeIndex];
+		themeToggle?.setAttribute("data-theme", theme);
+		localStorage.setItem("theme", theme);
+
+		if (theme === "system") {
+			const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
+				.matches
+				? "dark"
+				: "light";
+			document.documentElement.setAttribute("data-theme", systemTheme);
+		} else {
+			document.documentElement.setAttribute("data-theme", theme);
+		}
+	}
+
+	function toggleTheme() {
+		currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+		applyTheme();
+	}
+
+	window
+		.matchMedia("(prefers-color-scheme: dark)")
+		.addEventListener("change", () => {
+			if (themes[currentThemeIndex] === "system") {
+				applyTheme();
+			}
+		});
+
+	if (themeToggle) {
+		initializeTheme();
+		themeToggle.addEventListener("click", toggleTheme);
+	}
+</script>
+
+<style>
+	.swap-rotate {
+		@apply relative cursor-pointer w-5 h-5;
+	}
+
+	.swap-rotate > * {
+		@apply transform transition-all duration-300;
+		@apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+	}
+
+	/* Default state - all icons are scaled down and rotated */
+	.swap-rotate .swap-on,
+	.swap-rotate .swap-off,
+	.swap-rotate .swap-system {
+		@apply opacity-0 scale-0 rotate-90;
+	}
+
+	.swap-rotate[data-theme="light"] .swap-on {
+		@apply opacity-100 scale-100 rotate-0;
+	}
+
+	.swap-rotate[data-theme="dark"] .swap-off {
+		@apply opacity-100 scale-100 rotate-0;
+	}
+
+	.swap-rotate[data-theme="system"] .swap-system {
+		@apply opacity-100 scale-100 rotate-0;
+	}
+</style>

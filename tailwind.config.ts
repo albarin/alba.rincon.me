@@ -11,50 +11,52 @@ export default {
         themes: [
             {
                 light: {
-                    primary: "#9FD8D4", // mint
-                    "primary-content": "#2c2c2c", // dark text for light background
-                    secondary: "#8B7BA8", // purple
-                    "secondary-content": "#ffffff", // white text for dark background
-
-                    // Base colors
-                    "base-100": "#ffffff", // main background
-                    "base-200": "#f2f2f2", // slightly darker background
-                    "base-300": "#e5e5e5", // even darker background
-                    "base-content": "#2c2c2c", // main text color
-
-                    // State colors (keeping them on-theme)
-                    info: "#9FD8D4",
-                    success: "#86C8C3", // darker mint for success
-                    warning: "#8B7BA8", // using purple for warning
-                    error: "#A08DB9", // lighter purple for error
-
-                    // Neutral shades
-                    neutral: "#2c2c2c",
+                    "primary": "#3B82F6",        // Bright blue
+                    "primary-content": "#ffffff",
+                    "secondary": "#6D55A3",      // Deep purple
+                    "secondary-content": "#ffffff",
+                    "accent": "#00A6A6",         // Teal
+                    "accent-content": "#ffffff",
+                    "neutral": "#64748B",        // Cool grey
                     "neutral-content": "#ffffff",
-                },
-                dark: {
-                    primary: "#8B7BA8", // purple
-                    "primary-content": "#ffffff", // white text for dark background
-                    secondary: "#9FD8D4", // mint
-                    "secondary-content": "#2c2c2c", // dark text for light background
-
-                    // Base colors
-                    "base-100": "#1f1f1f", // main background
-                    "base-200": "#2c2c2c", // slightly lighter background
-                    "base-300": "#393939", // even lighter background
-                    "base-content": "#ffffff", // main text color
-
-                    // State colors (keeping them on-theme)
-                    info: "#9FD8D4",
-                    success: "#86C8C3", // darker mint for success
-                    warning: "#8B7BA8", // using purple for warning
-                    error: "#A08DB9", // lighter purple for error
-
-                    // Neutral shades
-                    neutral: "#ffffff",
-                    "neutral-content": "#2c2c2c",
+                    "base-100": "#C5EAE6",       // Light mint (provided)
+                    "base-200": "#B2D8D4",       // Slightly darker mint
+                    "base-300": "#9FC6C2",       // Even darker mint
+                    "base-content": "#1E293B",   // Deep blue-grey
+                    "info": "#2563EB",
+                    "info-content": "#ffffff",
+                    "success": "#059669",
+                    "success-content": "#ffffff",
+                    "warning": "#EAB308",
+                    "warning-content": "#ffffff",
+                    "error": "#DC2626",
+                    "error-content": "#ffffff",
                 },
             },
+            {
+                dark: {
+                    "primary": "#7B8CFF",        // Bright indigo
+                    "primary-content": "#ffffff",
+                    "secondary": "#FF84B7",      // Rose pink
+                    "secondary-content": "#ffffff",
+                    "accent": "#45CAFF",         // Electric blue
+                    "accent-content": "#ffffff",
+                    "neutral": "#5B4F76",        // Muted purple-blue
+                    "neutral-content": "#ffffff",
+                    "base-100": "#382757",       // Deep purple-blue
+                    "base-200": "#2D1F46",       // Darker purple-blue
+                    "base-300": "#221735",       // Even darker purple-blue
+                    "base-content": "#E6EAF0",   // Light grey-blue
+                    "info": "#67A9FF",
+                    "info-content": "#ffffff",
+                    "success": "#3DD598",
+                    "success-content": "#ffffff",
+                    "warning": "#FFB547",
+                    "warning-content": "#ffffff",
+                    "error": "#FF6B8B",
+                    "error-content": "#ffffff",
+                }
+            }
         ],
     },
 } satisfies Config
