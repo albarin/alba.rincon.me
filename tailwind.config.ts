@@ -7,6 +7,7 @@ export default {
         extend: {},
     },
     plugins: [daisyui],
+    darkMode: ['class', '[data-theme="dark"]'],
     daisyui: {
         themes: [
             {
@@ -17,7 +18,7 @@ export default {
                     "secondary-content": "#ffffff",
                     "accent": "#00A6A6",         // Teal
                     "accent-content": "#ffffff",
-                    "neutral": "#64748B",        // Cool grey
+                    "neutral": "#7FB3B0",      // Blue-tinted neutral
                     "neutral-content": "#ffffff",
                     "base-100": "#C5EAE6",       // Light mint (provided)
                     "base-200": "#B2D8D4",       // Slightly darker mint
