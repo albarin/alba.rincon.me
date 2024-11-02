@@ -4,17 +4,22 @@ import SocialBadge from "./SocialBadge.astro";
 import Mail from "./icons/Mail.astro";
 import Linkedin from "./icons/Linkedin.astro";
 import CV from "./icons/CV.astro";
+import { Image } from "astro:assets";
+import alba from "./public/alba.png";
 
-const personalImageAlt = "Alba Rincón";
 const yearsOfExperience = new Date().getFullYear() - 2010;
 ---
 
 <div class="max-w-2xl">
 	<div class="mb-4 flex gap-4">
-		<img
-			class="size-20 rounded-full bg-accent"
-			src="/alba.png"
-			alt={personalImageAlt}
+		<Image
+			class="rounded-full bg-accent w-[80px] h-[80px]"
+			src={alba}
+			alt="Alba Rincón"
+			width={alba.width}
+			height={alba.height}
+			loading="eager"
+			quality={100}
 		/>
 	</div>
 </div>
