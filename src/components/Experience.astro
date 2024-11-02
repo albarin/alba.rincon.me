@@ -1,0 +1,59 @@
+---
+import ExperienceItem from "./ExperienceItem.astro";
+
+const EXPERIENCE = [
+  {
+    date: "January 2022 - Present",
+    title: "Senior software engineer",
+    company: "Automattic - WooCommerce",
+    link: "https://automattic.com",
+    items: [
+      "Developed and maintained blocks for the Full Site editing experience in WooCommerce.",
+      "Developed and maintained the WooCommerce Core platform.",
+    ],
+  },
+  {
+    date: "January 2017 - January 2022",
+    title: "Senior software engineer",
+    company: "Typeform, Barcelona",
+    link: "https://typeform.com",
+    items: [
+      "Designed and developed from scratch the APIs for the new integrations system as part of the company efforts to open the possibility for external developers to implement native integrations.",
+      "Developed and maintained the APIs for the webhooks service and native integrations platform in Go. Collaborated in the implementation of the React/redux front-end consuming those same APIs. Developed new integrations with external services in Go using OAuth.",
+      "Extracted and migrated an important part of the legacy platform into a new microservice developed in Go.",
+      "Developed and evolved new APIs dedicated to the creation of forms on PHP using the Symfony2 framework.",
+    ],
+  },
+  {
+    date: "August 2015 - December 2016",
+    title: "Software engineer",
+    company: "MyBuilder, London",
+    link: "https://www.mybuilder.com",
+    items: [
+      "Developed and tested new features and maintaining the platform back-end (Symfony2, PHPUnit).",
+      "Implemented new APIs in Symfony 2 and participated in the development of the front-end to consume them using React.",
+    ],
+  },
+  {
+    date: "July 2010 - July 2015",
+    title: "Software engineer",
+    company: "KingEclient, Barcelona",
+    link: "https://kingeclient.com",
+    items: [
+      "Developed Drupal 6 & 7 websites.",
+      "Implemented the Drupal back-end and content migration of the new S&D Group website.",
+      "Implemented the Drupal back-end of the new MNAC (Museu Nacional d'Art de Catalunya) website and the migration/synchronization of the museum's catalog.",
+    ],
+  },
+];
+---
+
+<ol class="relative">
+  {
+    EXPERIENCE.map((experience) => (
+      <li class="">
+        <ExperienceItem {...experience} />
+      </li>
+    ))
+  }
+</ol>

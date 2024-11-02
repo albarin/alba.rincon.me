@@ -23,7 +23,7 @@ export default {
                     "base-100": "#C5EAE6",       // Light mint (provided)
                     "base-200": "#B2D8D4",       // Slightly darker mint
                     "base-300": "#9FC6C2",       // Even darker mint
-                    "base-content": "#1E293B",   // Deep blue-grey
+                    "base-content": "#00332f",   // Deep blue-grey
                     "info": "#2563EB",
                     "info-content": "#ffffff",
                     "success": "#059669",
@@ -47,7 +47,7 @@ export default {
                     "base-100": "#382757",       // Deep purple-blue
                     "base-200": "#2D1F46",       // Darker purple-blue
                     "base-300": "#221735",       // Even darker purple-blue
-                    "base-content": "#E6EAF0",   // Light grey-blue
+                    "base-content": "#f1edf7",   // Light grey-blue
                     "info": "#67A9FF",
                     "info-content": "#ffffff",
                     "success": "#3DD598",

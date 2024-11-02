@@ -1,10 +1,21 @@
 ---
+import Experience from "../components/Experience.astro";
 import Hero from "../components/Hero.astro";
+import Briefcase from "../components/icons/Briefcase.astro";
+import TitleSection from "../components/TitleSection.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout title="Welcome to Astro.">
-	<section class="pt-36 w-3/6">
+<Layout title="Alba Rincón | Software engineer">
+	<section class="pt-48 w-3/6">
 		<Hero />
+	</section>
+
+	<section id="experience" class="pt-36 w-3/6">
+		<TitleSection>
+			<Briefcase class="size-7" />
+			Experience
+		</TitleSection>
+		<Experience />
 	</section>
 </Layout>
