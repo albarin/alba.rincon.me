@@ -37,4 +37,24 @@ const { title } = Astro.props;
 		font-family: "Onest Variable", system-ui, sans-serif;
 		scroll-behavior: smooth;
 	}
+
+	html[data-theme="light"] body {
+		background-color: hsla(173, 46%, 84%, 1);
+		background-image: radial-gradient(
+				at 4% 3%,
+				hsla(176, 72%, 97%, 1) 0px,
+				transparent 50%
+			),
+			radial-gradient(at 92% 39%, hsla(179, 72%, 75%, 1) 0px, transparent 50%);
+	}
+
+	html[data-theme="dark"] body {
+		background-color: hsla(261, 38%, 24%, 1);
+		background-image: radial-gradient(
+				at 4% 3%,
+				hsla(261, 48%, 17%, 1) 0px,
+				transparent 50%
+			),
+			radial-gradient(at 92% 59%, hsla(261, 48%, 15%, 1) 0px, transparent 50%);
+	}
 </style>

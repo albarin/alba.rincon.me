@@ -29,6 +29,7 @@ const navItems = [
 	class="fixed top-0 z-10 mx-auto mt-2 flex w-full items-center justify-center"
 >
 	<nav
+		id="menu"
 		class="flex items-center justify-center rounded-full px-3 text-sm font-medium"
 	>
 		{
@@ -88,22 +89,21 @@ const navItems = [
 </script>
 
 <style>
-	nav {
-		animation: nav-shadow 1s linear both;
-		animation-timeline: scroll();
-		animation-range: 0 100px;
+	html[data-theme="light"] #menu {
+		/* From https://css.glass */
+		background: rgba(255, 255, 255, 0.3);
+		border-radius: 16px;
+		box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+		backdrop-filter: blur(6.3px);
+		-webkit-backdrop-filter: blur(6.3px);
+		border: 1px solid rgba(197, 234, 230, 0.87);
 	}
 
-	nav {
-		@apply bg-base-200;
-	}
-
-	@keyframes nav-shadow {
-		0% {
-			@apply bg-white/0;
-		}
-		to {
-			@apply shadow-lg ring-1 ring-neutral/10 backdrop-blur;
-		}
+	html[data-theme="dark"] #menu {
+		background: rgba(83, 55, 135, 0.35);
+		box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+		backdrop-filter: blur(5.8px);
+		-webkit-backdrop-filter: blur(5.8px);
+		border: 1px solid rgba(255, 255, 255, 0.1);
 	}
 </style>
