@@ -1,0 +1,37 @@
+---
+import { Image } from "astro:assets";
+import alba from "../assets/sunglasses.jpg";
+---
+
+<article class="flex flex-col items-center justify-center gap-12 lg:flex-row">
+	<div
+		class=""
+	>
+		<p class="text-pretty">
+			My name is Alba Rincón, a Barcelona-based software engineer with a
+			specialty in back-end development and solid frontend experience. I thrive
+			in agile, fast-paced, cross-functional teams where I can learn from
+			different perspectives and contribute to projects end-to-end.
+		</p>
+		<p class="text-pretty">
+			When I'm not programming at work, you can find me exploring and creating
+			small projects that solve practical problems while helping me learn new
+			technologies. Outside of coding, I enjoy capturing moments through my old
+			analog camera, lifting weights at the gym, or watching sports, among other
+			things.
+		</p>
+	</div>
+	
+	<div
+		class="order-1 rotate-6 border bg-white p-3 shadow-2xl transition-transform duration-200 hover:rotate-0 hover:scale-110"
+	>
+		<Image
+			class="w-[80px] lg:w-[400px]"
+			src={alba}
+			alt="Alba Rincón"
+			loading="eager"
+			quality={100}
+		/>
+		<div class="h-5 bg-white p-4"></div>
+	</div>
+</article>
