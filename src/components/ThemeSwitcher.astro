@@ -15,55 +15,61 @@ const { class: className } = Astro.props;
 	<Moon class="swap-off w-5 h-5 fill-current" />
 	<System class="swap-system w-5 h-5 fill-current" />
 </button>
-
 <script>
-	const themeToggle = document.getElementById("theme-toggle");
-	const themes = ["light", "dark", "system"];
-	let currentThemeIndex = 0;
+	function setupThemeSwitcher() {
+		const themeToggle = document.getElementById("theme-toggle");
+		const themes = ["light", "dark", "system"];
+		let currentThemeIndex = 0;
 
-	function initializeTheme() {
-		const savedTheme = localStorage.getItem("theme");
-		if (savedTheme && themes.includes(savedTheme)) {
-			currentThemeIndex = themes.indexOf(savedTheme);
-		} else {
-			currentThemeIndex = 2;
+		function initializeTheme() {
+			const savedTheme = localStorage.getItem("theme");
+			if (savedTheme && themes.includes(savedTheme)) {
+				currentThemeIndex = themes.indexOf(savedTheme);
+			} else {
+				currentThemeIndex = 2; // default to system
+			}
+			applyTheme();
 		}
-		applyTheme();
-	}
 
-	function applyTheme() {
-		const theme = themes[currentThemeIndex];
-		themeToggle?.setAttribute("data-theme", theme);
-		localStorage.setItem("theme", theme);
+		function applyTheme() {
+			const theme = themes[currentThemeIndex];
+			themeToggle?.setAttribute("data-theme", theme);
+			localStorage.setItem("theme", theme);
 
-		if (theme === "system") {
-			const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
-				.matches
-				? "dark"
-				: "light";
-			document.documentElement.setAttribute("data-theme", systemTheme);
-		} else {
-			document.documentElement.setAttribute("data-theme", theme);
+			if (theme === "system") {
+				const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
+					.matches
+					? "dark"
+					: "light";
+				document.documentElement.setAttribute("data-theme", systemTheme);
+			} else {
+				document.documentElement.setAttribute("data-theme", theme);
+			}
 		}
-	}
 
-	function toggleTheme() {
-		currentThemeIndex = (currentThemeIndex + 1) % themes.length;
-		applyTheme();
-	}
+		function toggleTheme() {
+			currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+			applyTheme();
+		}
 
-	window
-		.matchMedia("(prefers-color-scheme: dark)")
-		.addEventListener("change", () => {
+		// Setup system theme change listener
+		const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+		mediaQuery.addEventListener("change", () => {
 			if (themes[currentThemeIndex] === "system") {
 				applyTheme();
 			}
 		});
 
-	if (themeToggle) {
-		initializeTheme();
-		themeToggle.addEventListener("click", toggleTheme);
+		if (themeToggle) {
+			initializeTheme();
+			themeToggle.addEventListener("click", toggleTheme);
+		}
 	}
+
+	// Run setup on both initial load and subsequent navigations
+	document.addEventListener("astro:page-load", setupThemeSwitcher);
+	// For initial page load
+	setupThemeSwitcher();
 </script>
 
 <style>
