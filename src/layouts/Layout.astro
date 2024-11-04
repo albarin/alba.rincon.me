@@ -27,9 +27,11 @@ const { title, class: className } = Astro.props as Props;
 		<title>{title}</title>
 		<ClientRouter />
 	</head>
-	<body class={`flex flex-col items-center justify-center ${className}`}>
+	<body>
 		<Menu />
-		<slot />
+		<main class={`flex flex-col items-center justify-center ${className}`}>
+			<slot />
+		</main>
 	</body>
 </html>
 
