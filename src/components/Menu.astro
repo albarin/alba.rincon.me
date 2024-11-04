@@ -49,7 +49,7 @@ const navItems = [
 
 <script>
 	document.addEventListener("astro:page-load", () => {
-		const sections = document.querySelectorAll("section");
+		const sections = document.querySelectorAll("section[id");
 		const navItems = document.querySelectorAll("header nav a");
 
 		const callback = (entries: any[]) => {
@@ -59,7 +59,7 @@ const navItems = [
 						if (item.getAttribute("aria-label") == entry.target.id) {
 							item.classList.add("text-accent");
 						} else {
-							item.classList.remove("text-aceent");
+							item.classList.remove("text-accent");
 						}
 					});
 				}
