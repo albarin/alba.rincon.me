@@ -1,5 +1,7 @@
 ---
+import { Image } from "astro:assets";
 import ThemeSwitcher from "./ThemeSwitcher.astro";
+import alba from "../assets/alba.png";
 
 const navItems = [
 	{
@@ -8,9 +10,9 @@ const navItems = [
 		url: "/#experience",
 	},
 	{
-	  title: "Projects",
-	  label: "projects",
-	  url: "/#projects",
+		title: "Projects",
+		label: "projects",
+		url: "/#projects",
 	},
 	{
 		title: "About",
@@ -32,6 +34,17 @@ const navItems = [
 		id="menu"
 		class="flex items-center justify-center rounded-full px-3 text-sm font-medium"
 	>
+		<a href="/" class="mr-2">
+			<Image
+				class="h-6 w-6 rounded-full bg-accent"
+				src={alba}
+				alt="Alba Rincón"
+				width={alba.width}
+				height={alba.height}
+				loading="eager"
+				quality={100}
+			/>
+		</a>
 		{
 			navItems.map((link) => (
 				<a
