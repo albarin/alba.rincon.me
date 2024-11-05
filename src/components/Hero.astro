@@ -8,6 +8,9 @@ import { Image } from "astro:assets";
 import alba from "../assets/alba.png";
 
 const yearsOfExperience = new Date().getFullYear() - 2010;
+
+const images = await Astro.glob('../assets/alba*.png');
+const randomImage = images[Math.floor(Math.random() * images.length)];
 ---
 
 <div class="max-w-2xl">
@@ -15,7 +18,7 @@ const yearsOfExperience = new Date().getFullYear() - 2010;
 		<a href="/">
 			<Image
 				class="rounded-full bg-accent w-[80px] h-[80px]"
-				src={alba}
+				src={randomImage.default}
 				alt="Alba Rincón"
 				width={alba.width}
 				height={alba.height}
