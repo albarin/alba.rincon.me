@@ -1,10 +1,11 @@
 ---
 import AboutMe from "../components/AboutMe.astro";
 import Experience from "../components/Experience.astro";
-import Footer from "../components/Footer.astro";
 import Hero from "../components/Hero.astro";
 import Briefcase from "../components/icons/Briefcase.astro";
+import Code from "../components/icons/Code.astro";
 import ProfileCheck from "../components/icons/ProfileCheck.astro";
+import Projects from "../components/Projects.astro";
 import Section from "../components/Section.astro";
 import TitleSection from "../components/TitleSection.astro";
 import Layout from "../layouts/Layout.astro";
@@ -23,7 +24,15 @@ import Layout from "../layouts/Layout.astro";
 		<Experience />
 	</Section>
 
-	<Section id="about" class="mt-28 mb-20 sm:mt-40 sm:mb-20">
+	<Section id="projects" class="mt-28 sm:mt-40">
+		<TitleSection>
+			<Code class="size-7" />
+			Projects
+		</TitleSection>
+		<Projects />
+	</Section>
+
+	<Section id="about" class="mb-20 mt-28 sm:mb-20 sm:mt-40">
 		<TitleSection>
 			<ProfileCheck class="size-7" />
 			About me

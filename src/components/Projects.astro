@@ -1,0 +1,56 @@
+---
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+import SocialBadge from "./SocialBadge.astro";
+import Github from "./icons/Github.astro";
+import Link from "./icons/Link.astro";
+
+const projects = await getCollection("projects");
+---
+
+<div class="flex flex-col gap-y-8">
+	{
+		projects.map(({ slug, data, body }) => (
+			<article class="group flex flex-col items-center space-x-0 space-y-8 md:flex-row md:space-x-8 md:space-y-0">
+				<div class="w-full md:w-1/2">
+					<div class="rounded-xl bg-primary/70 px-7 py-3 shadow-xl hover:bg-primary transition ease-in-out duration-400">
+						<Image
+							src={data.image}
+							alt={data.title}
+							class="duration-400 h-auto w-full object-cover transition delay-150 ease-in-out hover:-translate-y-1 hover:scale-110"
+						/>
+					</div>
+				</div>
+
+				<div class="w-full md:w-1/2 md:max-w-lg">
+					<h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
+						<span>{data.title}</span>
+					</h3>
+					<div class="mt-2 flex flex-wrap">
+						<ul class="mb-2 flex flex-row gap-x-2">
+							{data.tags.map((tag) => (
+								<div class="badge badge-neutral text-xs">{tag}</div>
+							))}
+						</ul>
+
+						<div class="mt-2">{body}</div>
+						<footer class="mt-4 flex items-end justify-start gap-x-4">
+							{data.code && (
+								<SocialBadge href={data.code}>
+									<Github class="size-6" />
+									Code
+								</SocialBadge>
+							)}
+							{data.link && (
+								<SocialBadge href={data.link}>
+									<Link class="size-4" />
+									Preview
+								</SocialBadge>
+							)}
+						</footer>
+					</div>
+				</div>
+			</article>
+		))
+	}
+</div>
